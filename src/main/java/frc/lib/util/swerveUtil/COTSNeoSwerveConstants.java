@@ -4,6 +4,7 @@ import edu.wpi.first.math.util.Units;
 
 /* Contains values and required settings for common COTS swerve modules. */
 public class COTSNeoSwerveConstants {
+
     public final double wheelDiameter;
     public final double wheelCircumference;
     public final double angleGearRatio;
@@ -16,7 +17,18 @@ public class COTSNeoSwerveConstants {
     public final boolean angleMotorInvert;
     public final boolean canCoderInvert;
 
-    public COTSNeoSwerveConstants(double wheelDiameter, double angleGearRatio, double driveGearRatio, double angleKP, double angleKI, double angleKD, double angleKF, boolean driveMotorInvert, boolean angleMotorInvert, boolean canCoderInvert){
+    public COTSNeoSwerveConstants(
+        double wheelDiameter,
+        double angleGearRatio,
+        double driveGearRatio,
+        double angleKP,
+        double angleKI,
+        double angleKD,
+        double angleKF,
+        boolean driveMotorInvert,
+        boolean angleMotorInvert,
+        boolean canCoderInvert
+    ) {
         this.wheelDiameter = wheelDiameter;
         this.wheelCircumference = wheelDiameter * Math.PI;
         this.angleGearRatio = angleGearRatio;
@@ -29,45 +41,67 @@ public class COTSNeoSwerveConstants {
         this.angleMotorInvert = angleMotorInvert;
         this.canCoderInvert = canCoderInvert;
     }
-    
+
     /** Swerve Drive Specialties - MK3 Module*/
-    public static COTSNeoSwerveConstants SDSMK3(double driveGearRatio){
+    public static COTSNeoSwerveConstants SDSMK3(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
- 
+
         /** 12.8 : 1 */
         double angleGearRatio = (12.8 / 1.0);
- 
+
         double angleKP = 0.2;
         double angleKI = 0.0;
         double angleKD = 0.0;
         double angleKF = 0.0;
- 
+
         boolean driveMotorInvert = false;
         boolean angleMotorInvert = false;
         boolean canCoderInvert = false;
-        return new COTSNeoSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
+        return new COTSNeoSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            angleKF,
+            driveMotorInvert,
+            angleMotorInvert,
+            canCoderInvert
+        );
     }
 
     /** Swerve Drive Specialties - MK4 Module*/
-    public static COTSNeoSwerveConstants SDSMK4(double driveGearRatio){
+    public static COTSNeoSwerveConstants SDSMK4(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
- 
+
         /** 12.8 : 1 */
         double angleGearRatio = (12.8 / 1.0);
- 
+
         double angleKP = 0.2;
         double angleKI = 0.0;
         double angleKD = 0.0;
         double angleKF = 0.0;
- 
+
         boolean driveMotorInvert = false;
         boolean angleMotorInvert = false;
         boolean canCoderInvert = false;
-        return new COTSNeoSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
+        return new COTSNeoSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            angleKF,
+            driveMotorInvert,
+            angleMotorInvert,
+            canCoderInvert
+        );
     }
 
     /** Swerve Drive Specialties - MK4i Module*/
-    public static COTSNeoSwerveConstants SDSMK4i(double driveGearRatio){
+    public static COTSNeoSwerveConstants SDSMK4i(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
         /** (150 / 7) : 1 */
@@ -81,11 +115,22 @@ public class COTSNeoSwerveConstants {
         boolean driveMotorInvert = false;
         boolean angleMotorInvert = true;
         boolean canCoderInvert = false;
-        return new COTSNeoSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
+        return new COTSNeoSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            angleKF,
+            driveMotorInvert,
+            angleMotorInvert,
+            canCoderInvert
+        );
     }
 
     /** West Coast Products - Flipped Gear Module*/
-    public static COTSNeoSwerveConstants WCPxFlippedGear(double driveGearRatio){
+    public static COTSNeoSwerveConstants WCPxFlippedGear(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
         /** (150 / 7) : 1 */
@@ -99,11 +144,22 @@ public class COTSNeoSwerveConstants {
         boolean driveMotorInvert = false;
         boolean angleMotorInvert = true;
         boolean canCoderInvert = false;
-        return new COTSNeoSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
+        return new COTSNeoSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            angleKF,
+            driveMotorInvert,
+            angleMotorInvert,
+            canCoderInvert
+        );
     }
 
     /** West Coast Products - Flipped Belt Module*/
-    public static COTSNeoSwerveConstants WCPxFlippedBelt(double driveGearRatio){
+    public static COTSNeoSwerveConstants WCPxFlippedBelt(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
         /** (150 / 7) : 1 */
@@ -117,11 +173,22 @@ public class COTSNeoSwerveConstants {
         boolean driveMotorInvert = false;
         boolean angleMotorInvert = false;
         boolean canCoderInvert = false;
-        return new COTSNeoSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
+        return new COTSNeoSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            angleKF,
+            driveMotorInvert,
+            angleMotorInvert,
+            canCoderInvert
+        );
     }
 
     /** West Coast Products - Non-Flipped Belt Module*/
-    public static COTSNeoSwerveConstants WCPxNonFlippedBelt(double driveGearRatio){
+    public static COTSNeoSwerveConstants WCPxNonFlippedBelt(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
         /** (150 / 7) : 1 */
@@ -135,11 +202,22 @@ public class COTSNeoSwerveConstants {
         boolean driveMotorInvert = false;
         boolean angleMotorInvert = true;
         boolean canCoderInvert = false;
-        return new COTSNeoSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
+        return new COTSNeoSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            angleKF,
+            driveMotorInvert,
+            angleMotorInvert,
+            canCoderInvert
+        );
     }
 
     /** REV Robotics - MAXSwerve Module */
-    public static COTSNeoSwerveConstants REVMaxSwerve(double driveGearRatio){
+    public static COTSNeoSwerveConstants REVMaxSwerve(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
         /** (150 / 7) : 1 */
@@ -153,11 +231,23 @@ public class COTSNeoSwerveConstants {
         boolean driveMotorInvert = false;
         boolean angleMotorInvert = true;
         boolean canCoderInvert = false;
-        return new COTSNeoSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
+        return new COTSNeoSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            angleKF,
+            driveMotorInvert,
+            angleMotorInvert,
+            canCoderInvert
+        );
     }
 
     /* Drive Gear Ratios for all supported modules */
-    public class driveGearRatios{
+    public class driveGearRatios {
+
         /* SDS MK3 */
         /** SDS MK3 - 8.16 : 1 */
         public static final double SDSMK3_Standard = (8.16 / 1.0);
@@ -173,7 +263,7 @@ public class COTSNeoSwerveConstants {
         public static final double SDSMK4_L3 = (6.12 / 1.0);
         /** SDS MK4 - 5.14 : 1 */
         public static final double SDSMK4_L4 = (5.14 / 1.0);
-        
+
         /* SDS MK4i */
         /** SDS MK4i - 8.14 : 1 */
         public static final double SDSMK4i_L1 = (8.14 / 1.0);
@@ -198,7 +288,5 @@ public class COTSNeoSwerveConstants {
         public static final double REVMax12T = (5.50 / 1.0);
         public static final double REVMax13T = (5.08 / 1.0);
         public static final double REVMax14T = (4.71 / 1.0);
-
-
     }
 }

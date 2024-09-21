@@ -23,10 +23,10 @@ public class RobotContainer {
     /* Controllers */
     private final Joystick driver = new Joystick(0);
 
-   /* Driver Controls */
-	private final int translationAxis = XboxController.Axis.kLeftY.value;
-	private final int strafeAxis = XboxController.Axis.kLeftX.value;
-	private final int rotationAxis = XboxController.Axis.kRightX.value;
+    /* Driver Controls */
+    private final int translationAxis = XboxController.Axis.kLeftY.value;
+    private final int strafeAxis = XboxController.Axis.kLeftX.value;
+    private final int rotationAxis = XboxController.Axis.kRightX.value;
 
     /* Driver Buttons */
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
@@ -43,23 +43,19 @@ public class RobotContainer {
     private final Swerve s_Swerve = new Swerve();
     private final PoseEstimator s_PoseEstimator = new PoseEstimator();
 
-
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
-                s_Swerve, 
-                () -> -driver.getRawAxis(translationAxis), 
-                () -> -driver.getRawAxis(strafeAxis), 
-                () -> -driver.getRawAxis(rotationAxis), 
+                s_Swerve,
+                () -> -driver.getRawAxis(translationAxis),
+                () -> -driver.getRawAxis(strafeAxis),
+                () -> -driver.getRawAxis(rotationAxis),
                 () -> false,
                 () -> dampen.getAsBoolean(),
-                () -> 1 //speed multiplier 
+                () -> 1 //speed multiplier
             )
         );
-
-
-
 
         // Configure the button bindings
         configureButtonBindings();
@@ -75,25 +71,19 @@ public class RobotContainer {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
 
-
         //heading lock bindings
-        up.onTrue(
-            new InstantCommand(() -> States.driveState = States.DriveStates.d90)).onFalse(
-            new InstantCommand(() -> States.driveState = States.DriveStates.standard)
-            );
-        left.onTrue(
-            new InstantCommand(() -> States.driveState = States.DriveStates.d180)).onFalse(
-            new InstantCommand(() -> States.driveState = States.DriveStates.standard)
-            );
-        right.onTrue(
-            new InstantCommand(() -> States.driveState = States.DriveStates.d0)).onFalse(
-            new InstantCommand(() -> States.driveState = States.DriveStates.standard)
-            );
-        down.onTrue(
-            new InstantCommand(() -> States.driveState = States.DriveStates.d270)).onFalse(
-            new InstantCommand(() -> States.driveState = States.DriveStates.standard)
-            );
-
+        up
+            .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d90))
+            .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
+        left
+            .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d180))
+            .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
+        right
+            .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d0))
+            .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
+        down
+            .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d270))
+            .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
     }
 
     /**

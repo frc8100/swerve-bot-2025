@@ -5,17 +5,14 @@ import com.ctre.phoenix.sensors.CANCoderConfiguration;
 import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 import com.ctre.phoenix.sensors.SensorTimeBase;
 import com.revrobotics.CANSparkBase.IdleMode;
-
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 import frc.lib.util.swerveUtil.COTSFalconSwerveConstants;
 import frc.lib.util.swerveUtil.COTSNeoSwerveConstants;
 
+public class SwerveConfig {
 
-public class SwerveConfig 
-{
-    
     public CANCoderConfiguration canCoderConfig;
 
     //
@@ -24,26 +21,25 @@ public class SwerveConfig
     public static final double drivePower = 1;
     public static final double anglePower = .9;
 
-
     public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-
 
-    public static final COTSNeoSwerveConstants chosenModule =  
-        COTSNeoSwerveConstants.SDSMK4i(COTSNeoSwerveConstants.driveGearRatios.SDSMK4i_L2);
+    public static final COTSNeoSwerveConstants chosenModule = COTSNeoSwerveConstants.SDSMK4i(
+        COTSNeoSwerveConstants.driveGearRatios.SDSMK4i_L2
+    );
 
     /* Drivetrain Constants */
-    public static final double trackWidth = Units.inchesToMeters(25.75); 
-    public static final double wheelBase = Units.inchesToMeters(21.50); 
+    public static final double trackWidth = Units.inchesToMeters(25.75);
+    public static final double wheelBase = Units.inchesToMeters(21.50);
     public static final double wheelCircumference = chosenModule.wheelCircumference;
 
-
-    /* Swerve Kinematics 
+    /* Swerve Kinematics
      * No need to ever change this unless you are not doing a traditional rectangular/square 4 module swerve */
-     public static final SwerveDriveKinematics swerveKinematics = new SwerveDriveKinematics(
+    public static final SwerveDriveKinematics swerveKinematics = new SwerveDriveKinematics(
         new Translation2d(wheelBase / 2.0, trackWidth / 2.0),
         new Translation2d(wheelBase / 2.0, -trackWidth / 2.0),
         new Translation2d(-wheelBase / 2.0, trackWidth / 2.0),
-        new Translation2d(-wheelBase / 2.0, -trackWidth / 2.0));
-
+        new Translation2d(-wheelBase / 2.0, -trackWidth / 2.0)
+    );
 
     /* Module Gear Ratios */
     public static final double driveGearRatio = chosenModule.driveGearRatio;
@@ -51,12 +47,11 @@ public class SwerveConfig
 
     // encoder setup
     // meters per rotation
-    public static final double driveRevToMeters =  wheelCircumference / (driveGearRatio );
-    public static final double driveRpmToMetersPerSecond = driveRevToMeters/60 ;
+    public static final double driveRevToMeters = wheelCircumference / (driveGearRatio);
+    public static final double driveRpmToMetersPerSecond = driveRevToMeters / 60;
     // the number of degrees that a single rotation of the turn motor turns the wheel.
-    public static final double DegreesPerTurnRotation = 360/angleGearRatio;
+    public static final double DegreesPerTurnRotation = 360 / angleGearRatio;
 
-    
     /* Motor Inverts */
     public static final boolean angleMotorInvert = chosenModule.angleMotorInvert;
     public static final boolean driveMotorInvert = chosenModule.driveMotorInvert;
@@ -87,14 +82,14 @@ public class SwerveConfig
     public static final double angleKF = 0;
 
     /* Drive Motor PID Values */
-    public static final double driveKP = 0.1; 
+    public static final double driveKP = 0.1;
     public static final double driveKI = 0.0;
     public static final double driveKD = 0.0;
     public static final double driveKF = 0.0;
 
-    /* Drive Motor Characterization Values 
+    /* Drive Motor Characterization Values
      * Divide SYSID values by 12 to convert from volts to percent output for CTRE */
-    public static final double driveKS = (0.32); 
+    public static final double driveKS = (0.32);
     public static final double driveKV = (1.51);
     public static final double driveKA = (0.27);
 
@@ -103,14 +98,8 @@ public class SwerveConfig
     public static final double maxSpeed = 4.0;
     /** Radians per Second */
     public static final double maxAngularVelocity = 5.0; //max 10 or.....
-   
 
- 
- 
-   
-
-    public SwerveConfig()
-    {
+    public SwerveConfig() {
         canCoderConfig = new CANCoderConfiguration();
         canCoderConfig.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
         canCoderConfig.sensorDirection = canCoderInvert;
@@ -118,4 +107,3 @@ public class SwerveConfig
         canCoderConfig.sensorTimeBase = SensorTimeBase.PerSecond;
     }
 }
-

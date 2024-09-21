@@ -15,29 +15,29 @@ import frc.robot.Constants;
 import frc.robot.subsystems.swerve.SwerveConfig;
 
 public class PoseEstimator extends SubsystemBase {
-  /** Creates a new PoseEstimator. */
-  public SwerveDrivePoseEstimator sEstimator;
-  public Pose2d visionPose = new Pose2d();
-  
-  public PoseEstimator() {
-    sEstimator = new SwerveDrivePoseEstimator(
-      SwerveConfig.swerveKinematics,
-      new Rotation2d(),
-      new SwerveModulePosition[] {
-        new SwerveModulePosition(),
-        new SwerveModulePosition(),
-        new SwerveModulePosition(),
-        new SwerveModulePosition()
-      },
-      new Pose2d(),
-      Constants.PoseEstimator.stateStdDevs,
-      Constants.PoseEstimator.VisionStdDevs
-    );
 
-  }
+    /** Creates a new PoseEstimator. */
+    public SwerveDrivePoseEstimator sEstimator;
+    public Pose2d visionPose = new Pose2d();
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+    public PoseEstimator() {
+        sEstimator = new SwerveDrivePoseEstimator(
+            SwerveConfig.swerveKinematics,
+            new Rotation2d(),
+            new SwerveModulePosition[] {
+                new SwerveModulePosition(),
+                new SwerveModulePosition(),
+                new SwerveModulePosition(),
+                new SwerveModulePosition(),
+            },
+            new Pose2d(),
+            Constants.PoseEstimator.stateStdDevs,
+            Constants.PoseEstimator.VisionStdDevs
+        );
+    }
+
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
+    }
 }
