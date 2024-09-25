@@ -9,6 +9,9 @@ There are two main ways to get started with this code. For each of them, you wil
 - [Git](https://git-scm.com/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
+> [!NOTE]
+> It is recommended to use the [WPILib setup guide](https://docs.wpilib.org/en/latest/docs/zero-to-robot/step-2/wpilib-setup.html)
+
 The first way is to code on your own computer.
 
 1. Install the above software.
@@ -30,6 +33,31 @@ The second way is to open it on Github Codespaces. This is a cloud-based develop
 5. Install the recommended extensions (if you haven't already).
 6. You can now start coding.
 
-Once you make changes, you can commit them by running `git add .`, `git commit -m "Your message here"`, and `git push` in the terminal, or by using the built-in Git functionality in Visual Studio Code.
+<!-- ## Building Guide -->
 
-For more details on source control, see [Git documentation](https://git-scm.com/doc).
+<!-- TODO -->
+
+## Saving and Pulling Changes
+
+Once you make changes, you can upload (commit/push) your changes.
+
+If any changes are made on this repository, you also need to pull/sync the changes.
+
+1. (Recommended) Using the VSCode GUI: On the left side of the screen, there is a button that says `Source Control`. Open the screen. You can write a commit message and push.
+
+2. Using the Git CLI: there are two ways to do this: you can commit them by running `git add .`, `git commit -m "Your message here"`, and `git push` in the terminal.
+
+> [!NOTE]
+> You may have to run the [first time git setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) to commit/pull your changes
+
+> [!TIP]
+> It is recommended for you to learn how to write good git commit messages.
+>
+> Please read [this gist](https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53)
+> and [this article](https://www.gitkraken.com/learn/git/best-practices/git-commit-message)
+>
+> Also, see [this article](https://www.atlassian.com/git) and [this article](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners) for more info about git.
+
+
+
+For more details on source control, see the [Git documentation](https://git-scm.com/doc).
