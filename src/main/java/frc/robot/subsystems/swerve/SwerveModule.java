@@ -4,6 +4,10 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 
+/**
+ * A swerve module.
+ * Used to control a single swerve module on the robot.
+ */
 public interface SwerveModule {
     public void setDesiredState(SwerveModuleState desiredState, boolean isOpenLoop);
 

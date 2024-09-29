@@ -11,9 +11,16 @@ import edu.wpi.first.math.util.Units;
 import frc.lib.util.swerveUtil.COTSFalconSwerveConstants;
 import frc.lib.util.swerveUtil.COTSNeoSwerveConstants;
 
+/**
+ * Swerve configuration class.
+ * This class contains all the constants and configurations for the swerve drive.
+ */
 public class SwerveConfig {
 
-    public CANCoderConfiguration canCoderConfig;
+    /**
+     * The CANCoder configuration.
+     */
+    public final CANCoderConfiguration canCoderConfig;
 
     //
     public static final IdleMode driveIdleMode = IdleMode.kBrake;
@@ -100,7 +107,9 @@ public class SwerveConfig {
     public static final double maxAngularVelocity = 5.0; //max 10 or.....
 
     public SwerveConfig() {
+        // Set up the CANCoder configuration
         canCoderConfig = new CANCoderConfiguration();
+
         canCoderConfig.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
         canCoderConfig.sensorDirection = canCoderInvert;
         canCoderConfig.initializationStrategy = SensorInitializationStrategy.BootToAbsolutePosition;
