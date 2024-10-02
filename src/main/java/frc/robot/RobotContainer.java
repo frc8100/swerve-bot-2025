@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.*;
@@ -25,6 +26,8 @@ public class RobotContainer {
 
     /* Controllers */
     private final Joystick driver = new Joystick(0);
+    // private final XboxController upController = new XboxController(1);
+    private final CommandXboxController upController = new CommandXboxController(1);
 
     /* Driver Controls */
     private final int translationAxis = XboxController.Axis.kLeftY.value;
@@ -91,6 +94,20 @@ public class RobotContainer {
         down
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d270))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
+
+        // Up system bindings
+
+        // Note: on the Logitech controller, x and a are swapped
+        upController.b().whileTrue(m_intake.intake());
+        upController.x().whileTrue(m_intake.eintake());
+        upController.rightBumper().whileTrue(m_arm.up());
+        upController.leftBumper().whileTrue(m_arm.down());
+        // launcher controls (button to pre-spin the launcher and button to launch)
+        // upController.leftTrigger().whileTrue(m_launcher.pushOut());
+        // upController.rightTrigger().whileTrue(m_launcher.pushIn());
+
+        upController.a().whileTrue(m_launcher.pushOut());
+        upController.y().whileTrue(m_launcher.pushIn());
     }
 
     /**
