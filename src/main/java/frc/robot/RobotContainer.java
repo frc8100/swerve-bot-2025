@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.PoseEstimator;
 import frc.robot.subsystems.swerve.Swerve;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LauncherSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -42,6 +45,10 @@ public class RobotContainer {
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final PoseEstimator s_PoseEstimator = new PoseEstimator();
+    private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    private final ArmSubsystem m_arm = new ArmSubsystem();
+    private final LauncherSubsystem m_launcher = new LauncherSubsystem();
+
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
@@ -71,7 +78,7 @@ public class RobotContainer {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
 
-        //heading lock bindings
+        // Heading lock bindings
         up
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d90))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
