@@ -106,8 +106,10 @@ public class RobotContainer {
         // upController.leftTrigger().whileTrue(m_launcher.pushOut());
         // upController.rightTrigger().whileTrue(m_launcher.pushIn());
 
-        upController.a().whileTrue(m_launcher.pushOut());
-        upController.y().whileTrue(m_launcher.pushIn());
+        // upController.a().whileTrue(m_launcher.pushOut());
+        // upController.y().whileTrue(m_launcher.pushIn());
+        upController.leftTrigger(0.75).whileTrue(m_launcher.pushOut());
+        upController.rightTrigger(0.75).whileTrue(m_launcher.pushIn());
     }
 
     /**
