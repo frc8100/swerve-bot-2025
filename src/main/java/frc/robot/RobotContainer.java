@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
+import frc.robot.Controls;
 import frc.robot.commands.*;
 import frc.robot.subsystems.PoseEstimator;
 import frc.robot.subsystems.swerve.Swerve;
@@ -24,27 +25,6 @@ import frc.robot.subsystems.LauncherSubsystem;
  */
 public class RobotContainer {
 
-    /* Controllers */
-    private final Joystick driver = new Joystick(0);
-    // private final XboxController upController = new XboxController(1);
-    private final CommandXboxController upController = new CommandXboxController(1);
-
-    /* Driver Controls */
-    private final int translationAxis = XboxController.Axis.kLeftY.value;
-    private final int strafeAxis = XboxController.Axis.kLeftX.value;
-    private final int rotationAxis = XboxController.Axis.kRightX.value;
-
-    /* Driver Buttons */
-    private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
-    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
-
-    private final JoystickButton dampen = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
-
-    private final POVButton up = new POVButton(driver, 90);
-    private final POVButton down = new POVButton(driver, 270);
-    private final POVButton right = new POVButton(driver, 180);
-    private final POVButton left = new POVButton(driver, 0);
-
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final PoseEstimator s_PoseEstimator = new PoseEstimator();
@@ -58,11 +38,11 @@ public class RobotContainer {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve,
-                () -> -driver.getRawAxis(translationAxis),
-                () -> -driver.getRawAxis(strafeAxis),
-                () -> -driver.getRawAxis(rotationAxis),
+                () -> -Controls.driverController.getRawAxis(Controls.translationAxis),
+                () -> -Controls.driverController.getRawAxis(Controls.strafeAxis),
+                () -> -Controls.driverController.getRawAxis(Controls.rotationAxis),
                 () -> false,
-                () -> dampen.getAsBoolean(),
+                () -> Controls.dampen.getAsBoolean(),
                 () -> 1 //speed multiplier
             )
         );
@@ -79,37 +59,37 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         /* Driver Buttons */
-        zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
+        Controls.zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
 
         // Heading lock bindings
-        up
+        Controls.up
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d90))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
-        left
+        Controls.left
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d180))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
-        right
+        Controls.right
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d0))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
-        down
+        Controls.down
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d270))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
 
         // Up system bindings
 
         // Note: on the Logitech controller, x and a are swapped
-        upController.b().whileTrue(m_intake.intake());
-        upController.x().whileTrue(m_intake.eintake());
-        upController.rightBumper().whileTrue(m_arm.up());
-        upController.leftBumper().whileTrue(m_arm.down());
+        Controls.upController.b().whileTrue(m_intake.intake());
+        Controls.upController.x().whileTrue(m_intake.eintake());
+        Controls.upController.rightBumper().whileTrue(m_arm.up());
+        Controls.upController.leftBumper().whileTrue(m_arm.down());
         // launcher controls (button to pre-spin the launcher and button to launch)
-        // upController.leftTrigger().whileTrue(m_launcher.pushOut());
-        // upController.rightTrigger().whileTrue(m_launcher.pushIn());
+        // Controls.upController.leftTrigger().whileTrue(m_launcher.pushOut());
+        // Controls.upController.rightTrigger().whileTrue(m_launcher.pushIn());
 
-        // upController.a().whileTrue(m_launcher.pushOut());
-        // upController.y().whileTrue(m_launcher.pushIn());
-        upController.leftTrigger(0.75).whileTrue(m_launcher.pushOut());
-        upController.rightTrigger(0.75).whileTrue(m_launcher.pushIn());
+        // Controls.upController.a().whileTrue(m_launcher.pushOut());
+        // Controls.upController.y().whileTrue(m_launcher.pushIn());
+        Controls.upController.leftTrigger(0.75).whileTrue(m_launcher.pushOut());
+        Controls.upController.rightTrigger(0.75).whileTrue(m_launcher.pushIn());
     }
 
     /**
