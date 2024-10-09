@@ -22,7 +22,7 @@ public final class Constants {
     }
     
     public static final class Intake {
-        public static final int kCanId = 9;
+        public static final int kCanId = 7;
         public static final boolean kMotorInverted = true;
         public static final int kCurrentLimit = 40;
     

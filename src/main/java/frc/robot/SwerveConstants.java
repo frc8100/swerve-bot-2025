@@ -73,7 +73,7 @@ public final class SwerveConstants {
         public static final class Mod3 {
 
             public static final int driveMotorID = 8;
-            public static final int angleMotorID = 7;
+            public static final int angleMotorID = 9;
             public static final int canCoderID = 16;
             public static final Rotation2d angleOffset = Rotation2d.fromDegrees((185.273438) + 180.0);
             public static final RevSwerveModuleConstants constants = new RevSwerveModuleConstants(
