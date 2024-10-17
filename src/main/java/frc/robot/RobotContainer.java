@@ -38,11 +38,11 @@ public class RobotContainer {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve,
-                () -> -Controls.driverController.getRawAxis(Controls.translationAxis),
-                () -> -Controls.driverController.getRawAxis(Controls.strafeAxis),
-                () -> -Controls.driverController.getRawAxis(Controls.rotationAxis),
+                () -> -Controls.driverController.getRawAxis(Controls.Drive.translationAxis),
+                () -> -Controls.driverController.getRawAxis(Controls.Drive.strafeAxis),
+                () -> -Controls.driverController.getRawAxis(Controls.Drive.rotationAxis),
                 () -> false,
-                () -> Controls.dampen.getAsBoolean(),
+                () -> Controls.Drive.dampen.getAsBoolean(),
                 () -> 1 //speed multiplier
             )
         );
@@ -59,37 +59,38 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         /* Driver Buttons */
-        Controls.zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
+        Controls.Drive.zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
 
         // Heading lock bindings
-        Controls.up
+        Controls.Drive.up
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d90))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
-        Controls.left
+        Controls.Drive.left
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d180))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
-        Controls.right
+        Controls.Drive.right
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d0))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
-        Controls.down
+        Controls.Drive.down
             .onTrue(new InstantCommand(() -> States.driveState = States.DriveStates.d270))
             .onFalse(new InstantCommand(() -> States.driveState = States.DriveStates.standard));
 
         // Up system bindings
-
+        // TODO: Switch up system to event commands
         // Note: on the Logitech controller, x and a are swapped
         Controls.upController.b().whileTrue(m_intake.intake());
         Controls.upController.x().whileTrue(m_intake.eintake());
         Controls.upController.rightBumper().whileTrue(m_arm.up());
         Controls.upController.leftBumper().whileTrue(m_arm.down());
-        // launcher controls (button to pre-spin the launcher and button to launch)
-        // Controls.upController.leftTrigger().whileTrue(m_launcher.pushOut());
-        // Controls.upController.rightTrigger().whileTrue(m_launcher.pushIn());
+        // Controls.Up.intake.whileTrue(m_intake.intake());
+        // Controls.Up.eintake.whileTrue(m_intake.eintake());
+        // Controls.Up.armUp.whileTrue(m_arm.up());
+        // Controls.Up.armDown.whileTrue(m_arm.down());
 
-        // Controls.upController.a().whileTrue(m_launcher.pushOut());
-        // Controls.upController.y().whileTrue(m_launcher.pushIn());
         Controls.upController.leftTrigger(0.75).whileTrue(m_launcher.pushOut());
         Controls.upController.rightTrigger(0.75).whileTrue(m_launcher.pushIn());
+
+        // Controls.upController.axisGreaterThan(Controls.Up.launcherInAxis).ifHigh(m_launcher.pushIn());
     }
 
     /**
