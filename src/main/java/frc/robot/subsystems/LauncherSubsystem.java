@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -53,32 +52,34 @@ public class LauncherSubsystem extends SubsystemBase {
         m_launcherRunning = false;
     }
 
-  @Override
-  public void periodic() { // this method will be called once per scheduler run
-    // set the launcher motor powers based on whether the launcher is on or not
-    if (m_launcherRunning) {
-      m_topMotor.set(Constants.Launcher.kTopPower);
-      m_bottomMotor.set(Constants.Launcher.kBottomPower);
-    } else {
-      m_topMotor.set(0.0);
-      m_bottomMotor.set(0.0);
+    @Override
+    public void periodic() { // this method will be called once per scheduler run
+        // set the launcher motor powers based on whether the launcher is on or not
+        if (m_launcherRunning) {
+            m_topMotor.set(Constants.Launcher.kTopPower);
+            m_bottomMotor.set(Constants.Launcher.kBottomPower);
+        } else {
+            m_topMotor.set(0.0);
+            m_bottomMotor.set(0.0);
+        }
     }
-}
-public Command pushOut(){
-        return run(()-> {
+
+    public Command pushOut() {
+        return run(() -> {
             m_topMotor.set(Constants.Launcher.kTopPower);
             m_bottomMotor.set(Constants.Launcher.kBottomPower);
         });
         // startEnd(
         //     () -> {
         //     m_topMotor.set(Constants.Launcher.kTopPower);
-        //     m_bottomMotor.set(Constants.Launcher.kBottomPower);}, 
-        //     () -> {           
+        //     m_bottomMotor.set(Constants.Launcher.kBottomPower);},
+        //     () -> {
         //     m_topMotor.set(0);
         //     m_bottomMotor.set(0);});
     }
-    public Command pushIn(){
-        return run(()-> {
+
+    public Command pushIn() {
+        return run(() -> {
             m_topMotor.set(Constants.Launcher.kTopPowerIn);
             m_bottomMotor.set(Constants.Launcher.kBottomPowerIn);
         });

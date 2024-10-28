@@ -30,7 +30,7 @@ public class SwerveMod implements SwerveModule {
      * Used to zero the module to a specific angle.
      */
     private Rotation2d angleOffset;
-    
+
     /**
      * The angle motor.
      * This motor is used to control the angle of the module.

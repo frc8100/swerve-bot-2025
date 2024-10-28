@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.Controls;
 import frc.robot.commands.*;
-import frc.robot.subsystems.PoseEstimator;
-import frc.robot.subsystems.swerve.Swerve;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LauncherSubsystem;
+import frc.robot.subsystems.PoseEstimator;
+import frc.robot.subsystems.swerve.Swerve;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -31,7 +31,6 @@ public class RobotContainer {
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ArmSubsystem m_arm = new ArmSubsystem();
     private final LauncherSubsystem m_launcher = new LauncherSubsystem();
-
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
@@ -89,7 +88,6 @@ public class RobotContainer {
 
         Controls.upController.leftTrigger(0.75).whileTrue(m_launcher.pushOut());
         Controls.upController.rightTrigger(0.75).whileTrue(m_launcher.pushIn());
-
         // Controls.upController.axisGreaterThan(Controls.Up.launcherInAxis).ifHigh(m_launcher.pushIn());
     }
 

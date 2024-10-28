@@ -116,6 +116,7 @@ public class Swerve extends SubsystemBase {
             mod.setDesiredState(swerveModuleStates[mod.getModuleNumber()], isOpenLoop);
         }
     }
+
     /**
      * Sets the desired states for the swerve modules.
      * Used by SwerveControllerCommand in Auto.
@@ -215,7 +216,7 @@ public class Swerve extends SubsystemBase {
         // Otherwise, return the yaw as-is
         return Rotation2d.fromDegrees(gyro.getYaw());
     }
-    
+
     /**
      * Periodically updates the SmartDashboard with information about the swerve modules.
      */
@@ -232,18 +233,9 @@ public class Swerve extends SubsystemBase {
              */
             String moduleName = String.format("REV Mod %d", mod.getModuleNumber());
 
-            SmartDashboard.putNumber(
-                moduleName + " Cancoder",
-                mod.getCanCoder().getDegrees()
-            );
-            SmartDashboard.putNumber(
-                moduleName + " Integrated",
-                mod.getPosition().angle.getDegrees()
-            );
-            SmartDashboard.putNumber(
-                moduleName + " Velocity",
-                mod.getState().speedMetersPerSecond
-            );
+            SmartDashboard.putNumber(moduleName + " Cancoder", mod.getCanCoder().getDegrees());
+            SmartDashboard.putNumber(moduleName + " Integrated", mod.getPosition().angle.getDegrees());
+            SmartDashboard.putNumber(moduleName + " Velocity", mod.getState().speedMetersPerSecond);
         }
     }
 }
