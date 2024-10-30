@@ -1,6 +1,6 @@
 package frc.robot.subsystems.swerve;
 
-import com.ctre.phoenix.sensors.Pigeon2;
+import com.ctre.phoenix6.hardware.Pigeon2;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.lib.math.GeometryUtils;
 import frc.robot.SwerveConstants;
-import java.text.BreakIterator;
 
 /**
  * Swerve subsystem, responsible for controlling the swerve drive.
@@ -45,7 +44,8 @@ public class Swerve extends SubsystemBase {
      */
     public Swerve() {
         gyro = new Pigeon2(SwerveConstants.REV.pigeonID);
-        gyro.configFactoryDefault();
+        // TODO: implement settings
+        // gyro.configFactoryDefault();
 
         // Create swerve modules
         mSwerveMods = new SwerveModule[] {
@@ -210,11 +210,11 @@ public class Swerve extends SubsystemBase {
     public Rotation2d getYaw() {
         // If the gyro is inverted, return the inverted yaw
         if (SwerveConfig.invertGyro) {
-            return Rotation2d.fromDegrees(360 - gyro.getYaw());
+            return Rotation2d.fromDegrees(360 - gyro.getYaw().getValue());
         }
 
         // Otherwise, return the yaw as-is
-        return Rotation2d.fromDegrees(gyro.getYaw());
+        return Rotation2d.fromDegrees(gyro.getYaw().getValue());
     }
 
     /**
@@ -223,7 +223,7 @@ public class Swerve extends SubsystemBase {
     @Override
     public void periodic() {
         // Put the yaw on the SmartDashboard
-        SmartDashboard.putNumber("yaw", gyro.getYaw());
+        SmartDashboard.putNumber("yaw", gyro.getYaw().getValue());
 
         // Put the module information on the SmartDashboard
         for (SwerveModule mod : mSwerveMods) {

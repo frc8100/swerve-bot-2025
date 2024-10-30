@@ -1,14 +1,13 @@
 package frc.robot.subsystems.swerve;
 
 import com.ctre.phoenix.sensors.AbsoluteSensorRange;
-import com.ctre.phoenix.sensors.CANCoderConfiguration;
 import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 import com.ctre.phoenix.sensors.SensorTimeBase;
+import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.revrobotics.CANSparkBase.IdleMode;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
-import frc.lib.util.swerveUtil.COTSFalconSwerveConstants;
 import frc.lib.util.swerveUtil.COTSNeoSwerveConstants;
 
 /**
@@ -20,7 +19,7 @@ public class SwerveConfig {
     /**
      * The CANCoder configuration.
      */
-    public final CANCoderConfiguration canCoderConfig;
+    public final CANcoderConfiguration canCoderConfig;
 
     //
     public static final IdleMode driveIdleMode = IdleMode.kBrake;
@@ -108,8 +107,10 @@ public class SwerveConfig {
 
     public SwerveConfig() {
         // Set up the CANCoder configuration
-        canCoderConfig = new CANCoderConfiguration();
+        canCoderConfig = new CANcoderConfiguration();
 
+        // TODO: Update to phoenix 6
+        // canCoderConfig.MagnetSensor.SensorDirection = canCoderInvert;
         canCoderConfig.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
         canCoderConfig.sensorDirection = canCoderInvert;
         canCoderConfig.initializationStrategy = SensorInitializationStrategy.BootToAbsolutePosition;
