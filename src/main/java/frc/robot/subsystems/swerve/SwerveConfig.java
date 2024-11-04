@@ -1,8 +1,7 @@
 package frc.robot.subsystems.swerve;
 
-import com.ctre.phoenix.sensors.AbsoluteSensorRange;
-import com.ctre.phoenix.sensors.SensorInitializationStrategy;
-import com.ctre.phoenix.sensors.SensorTimeBase;
+import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
+import com.ctre.phoenix6.signals.SensorDirectionValue;
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.revrobotics.CANSparkBase.IdleMode;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -19,7 +18,7 @@ public class SwerveConfig {
     /**
      * The CANCoder configuration.
      */
-    public final CANcoderConfiguration canCoderConfig;
+    public final CANcoderConfiguration canCoderConfig = new CANcoderConfiguration();
 
     //
     public static final IdleMode driveIdleMode = IdleMode.kBrake;
@@ -107,13 +106,13 @@ public class SwerveConfig {
 
     public SwerveConfig() {
         // Set up the CANCoder configuration
-        canCoderConfig = new CANcoderConfiguration();
 
-        // TODO: Update to phoenix 6
-        // canCoderConfig.MagnetSensor.SensorDirection = canCoderInvert;
-        canCoderConfig.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
-        canCoderConfig.sensorDirection = canCoderInvert;
-        canCoderConfig.initializationStrategy = SensorInitializationStrategy.BootToAbsolutePosition;
-        canCoderConfig.sensorTimeBase = SensorTimeBase.PerSecond;
+        // TODO: Update to phoenix 6 (missing config, SensorDirection from boolean to enum)
+        // canCoderConfig.MagnetSensor.SensorDirection = SensorDirectionValue.Clockwise_Positive
+        canCoderConfig.MagnetSensor.SensorDirection = canCoderInvert ? SensorDirectionValue.Clockwise_Positive : SensorDirectionValue.CounterClockwise_Positive;
+        // canCoderConfig.MagnetSensor.AbsoluteSensorRange = AbsoluteSensorRangeValue.Unsigned_0_To360;
+        canCoderConfig.MagnetSensor.AbsoluteSensorRange = AbsoluteSensorRangeValue.Unsigned_0To1;
+        // canCoderConfig.MagnetSensor.initializationStrategy = SensorInitializationStrategy.BootToAbsolutePosition;
+        // canCoderConfig.MagnetSensor.sensorTimeBase = SensorTimeBase.PerSecond;
     }
 }
