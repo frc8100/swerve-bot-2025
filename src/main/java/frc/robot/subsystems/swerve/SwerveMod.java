@@ -90,7 +90,8 @@ public class SwerveMod implements SwerveModule {
      */
     private void configEncoders() {
         // Reset the CANCoder to factory defaults and configure it.
-        angleEncoder.getConfigurator().apply(new CANcoderConfiguration());
+        // angleEncoder.getConfigurator().apply(new CANcoderConfiguration());
+        angleEncoder.getConfigurator().refresh(new CANcoderConfiguration());
         angleEncoder.getConfigurator().apply(new SwerveConfig().canCoderConfig);
 
         // Assign the relative drive encoder and set the position to 0.
@@ -225,7 +226,7 @@ public class SwerveMod implements SwerveModule {
      * @return The CANCoder angle of the module.
      */
     public Rotation2d getCanCoder() {
-        return Rotation2d.fromDegrees(angleEncoder.getAbsolutePosition().getValue());
+        return Rotation2d.fromDegrees(angleEncoder.getAbsolutePosition().getValue() * 360);
     }
 
     /**
