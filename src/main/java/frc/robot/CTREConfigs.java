@@ -1,12 +1,12 @@
 package frc.robot;
 
-import frc.robot.subsystems.swerve.SwerveConfig;
-import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
-import com.ctre.phoenix6.signals.SensorDirectionValue;
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.MagnetSensorConfigs;
+import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
+import com.ctre.phoenix6.signals.SensorDirectionValue;
+import frc.robot.subsystems.swerve.SwerveConfig;
 
-// import 
+// import
 
 public final class CTREConfigs {
 
@@ -26,11 +26,12 @@ public final class CTREConfigs {
         MagnetSensorConfigs magnetSenorConfig = new MagnetSensorConfigs()
             .withAbsoluteSensorRange(AbsoluteSensorRangeValue.Unsigned_0To1)
             .withSensorDirection(
-                SwerveConfig.canCoderInvert ? SensorDirectionValue.Clockwise_Positive : SensorDirectionValue.CounterClockwise_Positive
+                SwerveConfig.canCoderInvert
+                    ? SensorDirectionValue.Clockwise_Positive
+                    : SensorDirectionValue.CounterClockwise_Positive
             );
 
         swerveCanCoderConfig.withMagnetSensor(magnetSenorConfig);
-
         // TODO: Update to phoenix 6 (missing config initializationStrategy, SensorDirection from boolean to enum)
         // canCoderConfig.MagnetSensor.SensorDirection = SensorDirectionValue.Clockwise_Positive
         // swerveCanCoderConfig.MagnetSensor.SensorDirection = SwerveConfig.canCoderInvert ? SensorDirectionValue.Clockwise_Positive : SensorDirectionValue.CounterClockwise_Positive;
