@@ -42,7 +42,7 @@ public class COTSFalconSwerveConstants {
         this.canCoderInvert = canCoderInvert;
     }
 
-    /** Swerve Drive Specialties - MK3 Module*/
+    /** Swerve Drive Specialties - MK3 Module */
     public static COTSFalconSwerveConstants SDSMK3(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
@@ -71,7 +71,7 @@ public class COTSFalconSwerveConstants {
         );
     }
 
-    /** Swerve Drive Specialties - MK4 Module*/
+    /** Swerve Drive Specialties - MK4 Module */
     public static COTSFalconSwerveConstants SDSMK4(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
@@ -100,7 +100,7 @@ public class COTSFalconSwerveConstants {
         );
     }
 
-    /** Swerve Drive Specialties - MK4i Module*/
+    /** Swerve Drive Specialties - MK4i Module */
     public static COTSFalconSwerveConstants SDSMK4i(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
@@ -129,14 +129,14 @@ public class COTSFalconSwerveConstants {
         );
     }
 
-    /** West Coast Products - Flipped Gear Module*/
+    /** West Coast Products - Flipped Gear Module */
     public static COTSFalconSwerveConstants WCPxFlippedGear(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
         /** (150 / 7) : 1 */
         double angleGearRatio = (15.43 / 1.0);
 
-        double angleKP = 0.3; //this value does need to be tested :skull:
+        double angleKP = 0.3; // this value does need to be tested :skull:
         double angleKI = 0.0;
         double angleKD = 0.0;
         double angleKF = 0.0;
@@ -158,14 +158,14 @@ public class COTSFalconSwerveConstants {
         );
     }
 
-    /** West Coast Products - Flipped Belt Module*/
+    /** West Coast Products - Flipped Belt Module */
     public static COTSFalconSwerveConstants WCPxFlippedBelt(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
         /** (150 / 7) : 1 */
         double angleGearRatio = (10.29 / 1.0);
 
-        double angleKP = 0.3; //this value does need to be tested :skull:
+        double angleKP = 0.3; // this value does need to be tested :skull:
         double angleKI = 0.0;
         double angleKD = 0.0;
         double angleKF = 0.0;
@@ -187,14 +187,14 @@ public class COTSFalconSwerveConstants {
         );
     }
 
-    /** West Coast Products - Non-Flipped Belt Module*/
+    /** West Coast Products - Non-Flipped Belt Module */
     public static COTSFalconSwerveConstants WCPxNonFlippedBelt(double driveGearRatio) {
         double wheelDiameter = Units.inchesToMeters(4.0);
 
         /** (150 / 7) : 1 */
         double angleGearRatio = (15.43 / 1.0);
 
-        double angleKP = 0.3; //this value does need to be tested :skull:
+        double angleKP = 0.3; // this value does need to be tested :skull:
         double angleKI = 0.0;
         double angleKD = 0.0;
         double angleKF = 0.0;

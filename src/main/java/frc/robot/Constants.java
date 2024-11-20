@@ -6,7 +6,7 @@ import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 
 public final class Constants {
-    
+
     public static final Mode currentMode = Mode.REAL;
 
     public static enum Mode {
@@ -17,7 +17,7 @@ public final class Constants {
         SIM,
 
         /** Replaying from a log file. */
-        REPLAY
+        REPLAY,
     }
 
     public static final double stickDeadband = 0.1;

@@ -6,25 +6,17 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 
-/**
- * Declares control key bindings
- */
+/** Declares control key bindings */
 public class Controls {
 
-    /**
-     * The driver controller, on port 0
-     */
+    /** The driver controller, on port 0 */
     public static final Joystick driverController = new Joystick(0);
 
-    /**
-     * The up controller, on port 1
-     */
+    /** The up controller, on port 1 */
     // public static final XboxController upController = new XboxController(1);
     public static final CommandXboxController upController = new CommandXboxController(1);
 
-    /**
-     * The drive controls
-     */
+    /** The drive controls */
     public static class Drive {
 
         // Driver Controls
@@ -54,15 +46,17 @@ public class Controls {
         public static final POVButton right = new POVButton(driverController, 180);
         public static final POVButton left = new POVButton(driverController, 0);
     }
-    /**
-     * The up controls ~(very good name)~
-     */
+    /** The up controls ~(very good name)~ */
     // public static class Up {
-    //     public static final JoystickButton intake = new JoystickButton(upController, XboxController.Button.kB.value);
-    //     public static final JoystickButton eintake = new JoystickButton(upController, XboxController.Button.kX.value);
+    //     public static final JoystickButton intake = new JoystickButton(upController,
+    // XboxController.Button.kB.value);
+    //     public static final JoystickButton eintake = new JoystickButton(upController,
+    // XboxController.Button.kX.value);
 
-    //     public static final JoystickButton armUp = new JoystickButton(upController, XboxController.Button.kRightBumper.value);
-    //     public static final JoystickButton armDown = new JoystickButton(upController, XboxController.Button.kLeftBumper.value);
+    //     public static final JoystickButton armUp = new JoystickButton(upController,
+    // XboxController.Button.kRightBumper.value);
+    //     public static final JoystickButton armDown = new JoystickButton(upController,
+    // XboxController.Button.kLeftBumper.value);
 
     //     public static final int launcherOutAxis = XboxController.Axis.kLeftTrigger.value;
     //     public static final int launcherInAxis = XboxController.Axis.kRightTrigger.value;

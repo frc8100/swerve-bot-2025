@@ -64,26 +64,26 @@ public class TeleopSwerve extends Command {
             (dampen.getAsBoolean() ? 0.2 : 1) *
             ((speedDial.getAsDouble() + 1) / 2);
 
-        //heading direction state
+        // heading direction state
         switch (States.driveState) {
             case d0:
-                //heading lock
+                // heading lock
                 rotationVal = rotationController.calculate(s_Swerve.getYaw().getRadians(), Units.degreesToRadians(0));
                 break;
             case d90:
-                //heading lock
+                // heading lock
                 rotationVal = rotationController.calculate(s_Swerve.getYaw().getRadians(), Units.degreesToRadians(90));
                 break;
             case d180:
-                //heading lock
+                // heading lock
                 rotationVal = rotationController.calculate(s_Swerve.getYaw().getRadians(), Units.degreesToRadians(180));
                 break;
             case d270:
-                //heading lock
+                // heading lock
                 rotationVal = rotationController.calculate(s_Swerve.getYaw().getRadians(), Units.degreesToRadians(270));
                 break;
             case standard:
-                //normal
+                // normal
                 rotationVal = rotationVal * SwerveConfig.maxAngularVelocity;
                 break;
         }

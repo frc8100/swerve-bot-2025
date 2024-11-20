@@ -2,7 +2,7 @@ package frc.robot;
 
 public class States {
 
-    //Drive states
+    // Drive states
     public static enum DriveStates {
         standard,
         d0,
