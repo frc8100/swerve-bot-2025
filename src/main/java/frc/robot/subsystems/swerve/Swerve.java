@@ -15,34 +15,24 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.lib.math.GeometryUtils;
 import frc.robot.SwerveConstants;
+import org.littletonrobotics.junction.Logger;
 
-/**
- * Swerve subsystem, responsible for controlling the swerve drive.
- */
+/** Swerve subsystem, responsible for controlling the swerve drive. */
 public class Swerve extends SubsystemBase {
 
-    /**
-     * The swerve odometry.
-     * This is used to determine the robot's position on the field.
-     */
+    /** The swerve odometry. This is used to determine the robot's position on the field. */
     public final SwerveDriveOdometry swerveOdometry;
 
     /**
-     * The swerve modules.
-     * These are the four swerve modules on the robot.
-     * Each module has a drive motor and a steering motor.
+     * The swerve modules. These are the four swerve modules on the robot. Each module has a drive
+     * motor and a steering motor.
      */
     public final SwerveModule[] mSwerveMods;
 
-    /**
-     * The gyro.
-     * This is used to determine the robot's heading.
-     */
+    /** The gyro. This is used to determine the robot's heading. */
     public final Pigeon2 gyro;
 
-    /**
-     * Creates a new Swerve subsystem.
-     */
+    /** Creates a new Swerve subsystem. */
     public Swerve() {
         gyro = new Pigeon2(SwerveConstants.REV.pigeonID);
         // TODO: implement settings
@@ -61,8 +51,9 @@ public class Swerve extends SubsystemBase {
     }
 
     /**
-     * Corrects for the dynamics of the robot.
-     * This is used to ensure that the robot drives as expected.
+     * Corrects for the dynamics of the robot. This is used to ensure that the robot drives as
+     * expected.
+     *
      * @param originalSpeeds The original chassis speeds.
      * @return The corrected chassis speeds.
      */
@@ -90,6 +81,7 @@ public class Swerve extends SubsystemBase {
 
     /**
      * Drives the swerve modules based on the desired translation and rotation.
+     *
      * @param translation The desired translation (x and y speeds).
      * @param rotation The desired rotation speed.
      * @param fieldRelative Whether the speeds are field-relative.
@@ -119,8 +111,8 @@ public class Swerve extends SubsystemBase {
     }
 
     /**
-     * Sets the desired states for the swerve modules.
-     * Used by SwerveControllerCommand in Auto.
+     * Sets the desired states for the swerve modules. Used by SwerveControllerCommand in Auto.
+     *
      * @param desiredStates The desired states for the swerve modules.
      */
     public void setModuleStates(SwerveModuleState[] desiredStates) {
@@ -136,8 +128,7 @@ public class Swerve extends SubsystemBase {
     }
 
     /**
-     * @return The current pose of the robot.
-     * This is determined by the swerve odometry.
+     * @return The current pose of the robot. This is determined by the swerve odometry.
      */
     public Pose2d getPose() {
         Pose2d p = swerveOdometry.getPoseMeters();
@@ -146,6 +137,7 @@ public class Swerve extends SubsystemBase {
 
     /**
      * Resets the odometry of the robot.
+     *
      * @param pose The new pose of the robot.
      */
     public void resetOdometry(Pose2d pose) {
@@ -185,6 +177,7 @@ public class Swerve extends SubsystemBase {
 
     /**
      * Zeros the gyro.
+     *
      * @param deg The angle to zero the gyro to.
      */
     public void zeroGyro(double deg) {
@@ -198,9 +191,7 @@ public class Swerve extends SubsystemBase {
         swerveOdometry.update(getYaw(), getModulePositions());
     }
 
-    /**
-     * Zeros the gyro, setting the angle to 0.
-     */
+    /** Zeros the gyro, setting the angle to 0. */
     public void zeroGyro() {
         zeroGyro(0);
     }
@@ -218,9 +209,7 @@ public class Swerve extends SubsystemBase {
         return Rotation2d.fromDegrees(gyro.getYaw().getValue());
     }
 
-    /**
-     * Periodically updates the SmartDashboard with information about the swerve modules.
-     */
+    /** Periodically updates the SmartDashboard with information about the swerve modules. */
     @Override
     public void periodic() {
         // Put the yaw on the SmartDashboard
@@ -228,15 +217,16 @@ public class Swerve extends SubsystemBase {
 
         // Put the module information on the SmartDashboard
         for (SwerveModule mod : mSwerveMods) {
-            /**
-             * The module name.
-             * Ex. "REV Mod 0"
-             */
+            /** The module name. Ex. "REV Mod 0" */
             String moduleName = String.format("REV Mod %d", mod.getModuleNumber());
 
             SmartDashboard.putNumber(moduleName + " Cancoder", mod.getCanCoder().getDegrees());
             SmartDashboard.putNumber(moduleName + " Integrated", mod.getPosition().angle.getDegrees());
             SmartDashboard.putNumber(moduleName + " Velocity", mod.getState().speedMetersPerSecond);
         }
+
+        // Record module states
+        Logger.recordOutput("SwerveModStates", getModuleStates());
+        Logger.recordOutput("SwerveGyro", gyro.getRotation2d());
     }
 }

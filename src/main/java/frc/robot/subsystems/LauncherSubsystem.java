@@ -35,8 +35,7 @@ public class LauncherSubsystem extends SubsystemBase {
     }
 
     /**
-     * Turns the launcher on. Can be run once and the launcher will stay running or
-     * run continuously
+     * Turns the launcher on. Can be run once and the launcher will stay running or run continuously
      * in a {@code RunCommand}.
      */
     public void runLauncher() {
@@ -44,8 +43,7 @@ public class LauncherSubsystem extends SubsystemBase {
     }
 
     /**
-     * Turns the launcher off. Can be run once and the launcher will stay running or
-     * run continuously
+     * Turns the launcher off. Can be run once and the launcher will stay running or run continuously
      * in a {@code RunCommand}.
      */
     public void stopLauncher() {

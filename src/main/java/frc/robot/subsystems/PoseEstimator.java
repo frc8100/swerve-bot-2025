@@ -16,6 +16,7 @@ public class PoseEstimator extends SubsystemBase {
 
     /** Creates a new PoseEstimator. */
     public SwerveDrivePoseEstimator sEstimator;
+
     public Pose2d visionPose = new Pose2d();
 
     public PoseEstimator() {

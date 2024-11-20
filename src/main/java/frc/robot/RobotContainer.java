@@ -1,15 +1,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.POVButton;
-import frc.robot.Controls;
 import frc.robot.commands.*;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -42,7 +36,7 @@ public class RobotContainer {
                 () -> -Controls.driverController.getRawAxis(Controls.Drive.rotationAxis),
                 () -> false,
                 () -> Controls.Drive.dampen.getAsBoolean(),
-                () -> 1 //speed multiplier
+                () -> 1 // speed multiplier
             )
         );
 

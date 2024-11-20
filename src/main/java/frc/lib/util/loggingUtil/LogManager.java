@@ -13,14 +13,15 @@ import java.util.function.DoubleSupplier;
 import java.util.function.IntSupplier;
 
 /**
- * Utilty class for logging data to the DataLogManager.
- * View logs using MechanicalAdvantage's advantage scope (https://github.com/Mechanical-Advantage/AdvantageScope)
+ * Utilty class for logging data to the DataLogManager. View logs using MechanicalAdvantage's
+ * advantage scope (https://github.com/Mechanical-Advantage/AdvantageScope)
  */
 public class LogManager {
 
     private static DataLog log = DataLogManager.getLog();
 
-    // These are array lists of log entry classes from WPI. appending to a log entry automatically adds to the log file.
+    // These are array lists of log entry classes from WPI. appending to a log entry automatically
+    // adds to the log file.
     private static ArrayList<DoubleLogEntry> doubleLogs = new ArrayList<>();
     private static ArrayList<DoubleArrayLogEntry> doubleArrayLogs = new ArrayList<>();
     private static ArrayList<BooleanLogEntry> booleanLogs = new ArrayList<>();
@@ -32,7 +33,8 @@ public class LogManager {
     private static ArrayList<BooleanSupplier> booleanValues = new ArrayList<>();
     private static ArrayList<IntSupplier> intValues = new ArrayList<>();
 
-    // These are the log entries that are not updated periodically, they just receive individual values.
+    // These are the log entries that are not updated periodically, they just receive individual
+    // values.
     private static HashMap<String, DoubleLogEntry> individualDoubleLogs = new HashMap<>();
     private static HashMap<String, DoubleArrayLogEntry> individualDoubleArrayLogs = new HashMap<>();
     private static HashMap<String, BooleanLogEntry> individualBooleanLogs = new HashMap<>();
@@ -49,9 +51,10 @@ public class LogManager {
     }
 
     /**
-     * Logs a single double value to the log. Do not use with the other addDouble() that takes a double supplier.
-     * This will only log the value once, so it should be called periodically or when needed. If you have a function that consistently
-     * returns values, it may be easier to use the double supplier log.
+     * Logs a single double value to the log. Do not use with the other addDouble() that takes a
+     * double supplier. This will only log the value once, so it should be called periodically or when
+     * needed. If you have a function that consistently returns values, it may be easier to use the
+     * double supplier log.
      *
      * @param name The name of the log. Use / to create subdirectories, and keep names unique.
      * @param value the value to be logged.
@@ -76,9 +79,10 @@ public class LogManager {
     }
 
     /**
-     * Logs a single double array to the log. Do not use with the other addDoubleArray() that takes a double array supplier.
-     * This will only log the value once, so it should be called periodically or when needed. If you have a function that consistently
-     * returns values, it may be easier to use the double array supplier log.
+     * Logs a single double array to the log. Do not use with the other addDoubleArray() that takes a
+     * double array supplier. This will only log the value once, so it should be called periodically
+     * or when needed. If you have a function that consistently returns values, it may be easier to
+     * use the double array supplier log.
      *
      * @param name The name of the log. Use / to create subdirectories, and keep names unique.
      * @param value the value to be logged.
@@ -104,8 +108,8 @@ public class LogManager {
 
     /**
      * Logs a single int to the log. Do not use with the other addInt() that takes a int supplier.
-     * This will only log the value once, so it should be called periodically or when needed. If you have a function that consistently
-     * returns values, it may be easier to use the int supplier log.
+     * This will only log the value once, so it should be called periodically or when needed. If you
+     * have a function that consistently returns values, it may be easier to use the int supplier log.
      *
      * @param name The name of the log. Use / to create subdirectories, and keep names unique.
      * @param value the value to be logged.
@@ -130,9 +134,10 @@ public class LogManager {
     }
 
     /**
-     * Logs a single boolean to the log. Do not use with the other addBoolean() that takes a boolean supplier.
-     * This will only log the value once, so it should be called periodically or when needed. If you have a function that consistently
-     * returns values, it may be easier to use the boolean supplier log.
+     * Logs a single boolean to the log. Do not use with the other addBoolean() that takes a boolean
+     * supplier. This will only log the value once, so it should be called periodically or when
+     * needed. If you have a function that consistently returns values, it may be easier to use the
+     * boolean supplier log.
      *
      * @param name The name of the log. Use / to create subdirectories, and keep names unique.
      * @param value the value to be logged.
@@ -146,9 +151,7 @@ public class LogManager {
         }
     }
 
-    /**
-     * Logs all the values that have been collected. Should be called periodically.
-     */
+    /** Logs all the values that have been collected. Should be called periodically. */
     public static void log() {
         for (int i = 0; i < doubleLogs.size(); i++) {
             doubleLogs.get(i).append(doubleValues.get(i).getAsDouble());

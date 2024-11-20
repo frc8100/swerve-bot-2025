@@ -4,12 +4,10 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import frc.lib.util.swerveUtil.RevSwerveModuleConstants;
 
 /**
- * This file comes with command robot projects, and is intended to contain
- * configuration information.
- * I think it would be prudent if this file only contained CanIDs, because it
- * is useful to have all the ids for the whole robot in one place.
- * other configuration goes into subsystem specific configuration files,
- * to make sure this one isn't cluttered.
+ * This file comes with command robot projects, and is intended to contain configuration
+ * information. I think it would be prudent if this file only contained CanIDs, because it is useful
+ * to have all the ids for the whole robot in one place. other configuration goes into subsystem
+ * specific configuration files, to make sure this one isn't cluttered.
  */
 public final class SwerveConstants {
 
@@ -30,7 +28,7 @@ public final class SwerveConstants {
             public static final int driveMotorID = 4;
             public static final int angleMotorID = 3;
             public static final int canCoderID = 13;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(11.074219); //Rotation2d.fromDegrees(37.7);
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(11.074219); // Rotation2d.fromDegrees(37.7);
             public static final RevSwerveModuleConstants constants = new RevSwerveModuleConstants(
                 driveMotorID,
                 angleMotorID,

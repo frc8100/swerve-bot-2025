@@ -15,55 +15,41 @@ import edu.wpi.first.wpilibj.DriverStation;
 import frc.lib.util.swerveUtil.CTREModuleState;
 import frc.lib.util.swerveUtil.RevSwerveModuleConstants;
 
-/**
- * a Swerve Modules using REV Robotics motor controllers and CTRE CANcoder absolute encoders.
- */
+/** a Swerve Modules using REV Robotics motor controllers and CTRE CANcoder absolute encoders. */
 public class SwerveMod implements SwerveModule {
 
     /**
-     * The module number identifier.
-     * Access using {@link #getModuleNumber} and {@link #setModuleNumber}.
+     * The module number identifier. Access using {@link #getModuleNumber} and {@link
+     * #setModuleNumber}.
      */
     private int moduleNumber;
 
-    /**
-     * The angle offset.
-     * Used to zero the module to a specific angle.
-     */
+    /** The angle offset. Used to zero the module to a specific angle. */
     private Rotation2d angleOffset;
 
-    /**
-     * The angle motor.
-     * This motor is used to control the angle of the module.
-     */
+    /** The angle motor. This motor is used to control the angle of the module. */
     private CANSparkMax mAngleMotor;
 
-    /**
-     * The drive motor.
-     * This motor is used to control the speed of the module.
-     */
+    /** The drive motor. This motor is used to control the speed of the module. */
     private CANSparkMax mDriveMotor;
 
-    /**
-     * The angle encoder.
-     * This encoder is used to determine the angle of the module.
-     */
+    /** The angle encoder. This encoder is used to determine the angle of the module. */
     private CANcoder angleEncoder;
 
     /**
-     * The relative encoders.
-     * These encoders are used to determine the relative angle of the module.
+     * The relative encoders. These encoders are used to determine the relative angle of the module.
      */
     private RelativeEncoder relAngleEncoder;
 
     /**
-     * The relative drive encoder.
-     * This encoder is used to determine the relative position of the module.
+     * The relative drive encoder. This encoder is used to determine the relative position of the
+     * module.
      */
     private RelativeEncoder relDriveEncoder;
 
     /**
      * Creates a new Swerve Module.
+     *
      * @param moduleNumber The module number.
      * @param moduleConstants The module constants.
      */
@@ -85,9 +71,7 @@ public class SwerveMod implements SwerveModule {
         configEncoders();
     }
 
-    /**
-     * Configures the encoders.
-     */
+    /** Configures the encoders. */
     private void configEncoders() {
         // Reset the CANCoder to factory defaults and configure it.
         // angleEncoder.getConfigurator().apply(new CANcoderConfiguration());
@@ -115,9 +99,7 @@ public class SwerveMod implements SwerveModule {
         mAngleMotor.burnFlash();
     }
 
-    /**
-     * Configures the angle motor.
-     */
+    /** Configures the angle motor. */
     private void configAngleMotor() {
         // Reset the angle motor to factory defaults
         mAngleMotor.restoreFactoryDefaults();
@@ -135,9 +117,7 @@ public class SwerveMod implements SwerveModule {
         mAngleMotor.setIdleMode(SwerveConfig.angleIdleMode);
     }
 
-    /**
-     * Configures the drive motor.
-     */
+    /** Configures the drive motor. */
     private void configDriveMotor() {
         // Reset the drive motor to factory defaults
         mDriveMotor.restoreFactoryDefaults();
@@ -157,6 +137,7 @@ public class SwerveMod implements SwerveModule {
 
     /**
      * Sets the desired state of the module.
+     *
      * @param desiredState The desired state.
      * @param isOpenLoop Whether the module is in open loop.
      */
@@ -177,6 +158,7 @@ public class SwerveMod implements SwerveModule {
 
     /**
      * Sets the speed of the module.
+     *
      * @param desiredState The desired state.
      * @param isOpenLoop Whether the module is in open loop.
      */
@@ -197,6 +179,7 @@ public class SwerveMod implements SwerveModule {
 
     /**
      * Sets the angle of the module.
+     *
      * @param desiredState The desired state.
      */
     private void setAngle(SwerveModuleState desiredState) {
@@ -238,15 +221,14 @@ public class SwerveMod implements SwerveModule {
 
     /**
      * Sets the module number.
+     *
      * @param moduleNumber The module number.
      */
     public void setModuleNumber(int moduleNumber) {
         this.moduleNumber = moduleNumber;
     }
 
-    /**
-     * Resets the module to absolute position.
-     */
+    /** Resets the module to absolute position. */
     private void resetToAbsolute() {
         double absolutePosition = getCanCoder().getDegrees() - angleOffset.getDegrees();
         relAngleEncoder.setPosition(absolutePosition);
