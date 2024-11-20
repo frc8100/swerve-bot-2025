@@ -6,6 +6,19 @@ import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 
 public final class Constants {
+    
+    public static final Mode currentMode = Mode.REAL;
+
+    public static enum Mode {
+        /** Running on a real robot. */
+        REAL,
+
+        /** Running a physics simulator. */
+        SIM,
+
+        /** Replaying from a log file. */
+        REPLAY
+    }
 
     public static final double stickDeadband = 0.1;
 

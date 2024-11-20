@@ -3,6 +3,9 @@
 
 node_modules/
 
+# Auto generated BuildConstants file
+src/main/java/frc/robot/BuildConstants.java
+
 ### C++ ###
 # Prerequisites
 *.d
