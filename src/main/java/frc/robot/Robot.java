@@ -24,8 +24,6 @@ import org.littletonrobotics.junction.wpilog.WPILOGWriter;
  */
 public class Robot extends LoggedRobot {
 
-    public static CTREConfigs ctreConfigs;
-
     private Command m_autonomousCommand;
 
     private RobotContainer m_robotContainer;
@@ -89,7 +87,6 @@ public class Robot extends LoggedRobot {
         chooser.addDefaultOption("Default Auto", defaultAuto);
         chooser.addOption("My Auto", customAuto);
 
-        ctreConfigs = new CTREConfigs();
         // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
         // autonomous chooser on the dashboard.
         m_robotContainer = new RobotContainer();
