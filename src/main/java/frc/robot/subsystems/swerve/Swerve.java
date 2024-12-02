@@ -228,5 +228,7 @@ public class Swerve extends SubsystemBase {
         // Record module states
         Logger.recordOutput("SwerveModStates", getModuleStates());
         Logger.recordOutput("SwerveGyro", gyro.getRotation2d());
+
+        Logger.recordOutput("SwervePose2d", swerveOdometry.getPoseMeters());
     }
 }
