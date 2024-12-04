@@ -1,7 +1,12 @@
 package frc.robot.subsystems.swerve;
 
+import org.littletonrobotics.junction.Logger;
+
 import com.ctre.phoenix6.configs.Pigeon2Configuration;
 import com.ctre.phoenix6.hardware.Pigeon2;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.util.PathPlannerLogging;
+
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -11,11 +16,12 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.lib.math.GeometryUtils;
-
-import org.littletonrobotics.junction.Logger;
 
 /** Swerve subsystem, responsible for controlling the swerve drive. */
 public class Swerve extends SubsystemBase {
@@ -31,6 +37,11 @@ public class Swerve extends SubsystemBase {
 
     /** The gyro. This is used to determine the robot's heading. */
     public final Pigeon2 gyro;
+
+    /**
+     * A 2d representation of the field
+     */
+    private Field2d field = new Field2d();
 
     /** Creates a new Swerve subsystem. */
     public Swerve() {
@@ -48,6 +59,44 @@ public class Swerve extends SubsystemBase {
 
         swerveOdometry = new SwerveDriveOdometry(SwerveConfig.swerveKinematics, getYaw(), getModulePositions());
         zeroGyro();
+
+        // Load the RobotConfig from the GUI settings. You should probably
+        // store this in your Constants file
+        // 2025 exclusive
+        // RobotConfig config;
+        // try{
+        //     config = RobotConfig.fromGUISettings();
+        // } catch (Exception e) {
+        //     // Handle exception as needed
+        //     e.printStackTrace();
+        // }
+
+        // Configure AutoBuilder
+        // AutoBuilder.configureHolonomic(
+        //     this::getPose,
+        //     this::resetPose,
+        //     this::getSpeeds,
+        //     this::driveRobotRelative,
+        //     SwerveConfig.pathFollowerConfig,
+        //     () -> {
+        //         // Boolean supplier that controls when the path will be mirrored for the red alliance
+        //         // This will flip the path being followed to the red side of the field.
+        //         // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+
+        //         Alliance alliance = DriverStation.getAlliance();
+        //         if (alliance.isPresent()) {
+        //             return alliance.get() == DriverStation.Alliance.Red;
+        //         }
+        //         return false;
+        //     },
+        //     this
+        // );
+
+        // Set up custom logging to add the current path to a field 2d widget
+        PathPlannerLogging.setLogActivePathCallback((poses) -> field.getObject("path").setPoses(poses));
+
+        SmartDashboard.putData("Field", field);
+        // Logger.recordOutput("Field2d", field);
     }
 
     /**
