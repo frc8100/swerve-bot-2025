@@ -4,6 +4,9 @@ import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.MagnetSensorConfigs;
 import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
+import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
+import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.util.ReplanningConfig;
 import com.revrobotics.CANSparkBase.IdleMode;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -102,6 +105,20 @@ public class SwerveConfig {
     public static final double maxSpeed = 4.0;
     /** Radians per Second */
     public static final double maxAngularVelocity = 5.0; // max 10 or.....
+
+    /**
+     * pplib config, temporary
+     */
+    // TODO: Update to 2025
+    public static final HolonomicPathFollowerConfig pathFollowerConfig = new HolonomicPathFollowerConfig(
+        new PIDConstants(5.0, 0, 0), // Translation constants 
+        new PIDConstants(5.0, 0, 0), // Rotation constants 
+        maxSpeed,
+        // flModuleOffset.getNorm(), // Drive base radius (distance from center to furthest module)
+        // Placeholder
+        0.1,
+        new ReplanningConfig()
+    );
 
     /** Configures the swerve config */
     public SwerveConfig() {
